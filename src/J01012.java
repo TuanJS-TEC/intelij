@@ -18,18 +18,4 @@ public class J01012 {
         sc.close();
     }
 
-//    public static void main(String[] args){
-//        Scanner sc = new Scanner(System.in);
-//        int T=sc.nextInt();
-//        while(T-->0){
-//            int n=sc.nextInt();
-//            int tmp=0;
-//            int ans=0;
-//            for(int i=0;i<n;i++){
-//                tmp+=i;
-//                if(tmp%i==0) ans++;
-//            }
-//        }
-//        sc.close();
-//    }
 }
