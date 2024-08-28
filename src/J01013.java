@@ -1,21 +1,47 @@
 import java.util.Scanner;
+import java.util.Arrays;
+import java.util.ArrayList;
 
 public class J01013 {
-    public static int check(int n){
-        if(n<2) return 0;
-        for(int i =1;i<n;i++){
-            if(n%i==0) return 0;
+    public static int  N =2000005;
+    public static ArrayList<Long> a= new ArrayList<>();
+
+    public static void seive(){
+        boolean b[] = new boolean[N];
+        Arrays.fill(b,true);
+        b[0] = false;
+        b[1] = false;
+        for (int i = 2 ;i*i<=N;++i){
+            if(b[i]){
+                for(int j = 2 ;j*j<=N-5;++j){
+                    b[j] = false;
+                }
+            }
         }
-        return 1;
+        for(int i= 2 ;i<b.length;++i){
+            if(b[i]){
+                a.add((long)i);
+            }
+        }
     }
 
-    public static void main(String[] args){
+    public static void main(String[] Args){
         Scanner sc = new Scanner(System.in);
-        int n=sc.nextInt();
-        int tmp=0;
-        for(int i=0;i<n;i++){
-            if(check(i)==0) tmp+=i;
-
+        seive();
+        long ans = 0;
+        int t = sc.nextInt();
+        while(t-->0){
+            long n = sc.nextLong();
+            for(int i =0;a.get(i)*a.get(i+1)<=n;++i){
+                while(n%a.get(i)==0){
+                    ans+=a.get(i);
+                    n/=a.get(i);
+                }
+                if(n>1) ans+=n;
+            }
         }
+        System.out.println(ans);
+        sc.close();
+
     }
 }
