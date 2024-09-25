@@ -4,7 +4,7 @@ public class BTTH06{
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         int T = sc.nextInt();
-        sc.nextLine();//bo xuong dong
+        sc.nextLine();
 
         while(T-->0){
             String expression = sc.nextLine();
@@ -17,6 +17,7 @@ public class BTTH06{
         String[] parts = expression.split(" ");
 
         int numQuestionmarks = countQuestion(parts);
+
 
         if(numQuestionMarks == 0 ){
             return expression;
@@ -51,7 +52,7 @@ public class BTTH06{
                         filledPart += part.charAt(i);
                 }
             }
-            filledExpression+=filledPart;
+            filledExpression += filledPart;
         }
         return filledExpression.trim();
     }
@@ -62,7 +63,9 @@ public class BTTH06{
             Object result = engine.eval(filledExpression);
 
             int numericResult = ((Number) result).intValue();
-            return 10<=numericResult && numericResult;
+            return 10<=numericResult && numericResult<=99 ;
+        }catch(Exception e){
+            return false;
         }
     }
 }
